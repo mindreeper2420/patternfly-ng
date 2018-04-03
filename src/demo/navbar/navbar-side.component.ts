@@ -12,7 +12,7 @@ import { NavbarItems } from './navbar-items';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'navbar-side',
-  styleUrls: ['./navbar-side.component.less'],
+  styleUrls: ['./navbar-side.component.scss'],
   templateUrl: './navbar-side.component.html'
 })
 export class NavbarSideComponent implements OnInit {

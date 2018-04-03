@@ -16,7 +16,7 @@ import { ListConfig } from '../list-config';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'list-basic-example',
-  styleUrls: ['./list-basic-example.component.less'],
+  styleUrls: ['./list-basic-example.component.scss'],
   templateUrl: './list-basic-example.component.html'
 })
 export class ListBasicExampleComponent implements OnInit {

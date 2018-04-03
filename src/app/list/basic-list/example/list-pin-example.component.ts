@@ -14,7 +14,8 @@ import { ListConfig } from '../list-config';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'list-pin-example',
-  styleUrls: ['./list-pin-example.component.less'],
+  // styleUrls: ['./list-pin-example.component.less'],
+  styleUrls: ['./list-pin-example.component.scss'],
   templateUrl: './list-pin-example.component.html'
 })
 export class ListPinExampleComponent implements OnInit {

@@ -7,7 +7,7 @@ import {
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'remaining-chars-count-example',
-  styleUrls: ['./remaining-chars-count-example.component.less'],
+  styleUrls: ['./remaining-chars-count-example.component.scss'],
   templateUrl: './remaining-chars-count-example.component.html'
 })
 export class RemainingCharsCountExampleComponent implements OnInit {

@@ -1,19 +1,19 @@
-@import (reference) './navbar';
+$import './navbar';
 
 .navbar-sidebar {
-  background: @navbar-sidebar-bg-color url(../images/grid-sidebar.png) no-repeat 50% 100%;
+  background: $navbar-sidebar-bg-color url('../images/grid-sidebar.png') no-repeat 50% 100%;
   border: 0;
   border-radius: 0;
   bottom: 0;
-  left: (-(@navbar-sidebar-width));
+  left: (-($navbar-sidebar-width));
   margin: 0;
   padding: 0;
   position: fixed;
   top: 72px;
-  transition: all .2s cubic-bezier(.35,0,.25,1);
-  width: @navbar-sidebar-width;
-  z-index: (@zindex-navbar-fixed - 1);
-  @media (min-width: @screen-md) {
+  transition: all .2s cubic-bezier(.35, 0, .25, 1);
+  width: $navbar-sidebar-width;
+  z-index: ($zindex-navbar-fixed - 1);
+  $media (min-width: $screen-md) {
     box-shadow: none !important;
     left: 0;
     overflow-x: hidden;
@@ -21,7 +21,7 @@
     padding-right: 0;
   }
   &.open {
-    box-shadow: 0 0 3px rgba(0,0,0,.95);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .95);
     left: 0;
     overflow-x: hidden;
     overflow-y: auto;
@@ -31,15 +31,15 @@
       right: 0;
       &:active,
       &:hover {
-        background: rgba(92, 103, 112, 0.5) !important;
+        background: rgba(92, 103, 112, .5) !important;
       }
       &:focus {
         background: transparent;
       }
-      .fa-angle-double-right{
+      .fa-angle-double-right {
         left: 6px;
         &:before {
-          content: @fa-var-angle-double-left;
+          content: $fa-var-angle-double-left;
         }
       }
     }
@@ -55,7 +55,7 @@
     padding-bottom: 0;
     padding-top: 0;
     position: relative;
-    @media (min-width: @screen-md) {
+    $media (min-width: $screen-md) {
       margin-bottom: 24px;
       margin-right: 0;
       margin-top: 23px;
@@ -64,12 +64,12 @@
     }
     &:before {
       color: #eee;
-      content: @fa-var-search;
-      font: 14px/1 @icon-font-name-fa;
+      content: $fa-var-search;
+      font: 14px/1 $icon-font-name-fa;
       position: absolute;
       left: 24px;
       top: 4px;
-      @media (min-width: @screen-md) {
+      $media (min-width: $screen-md) {
         left: 14px;
         top: 4px;
       }
@@ -78,7 +78,7 @@
       display: none;
     }
     .form-control {
-      background: rgba(255,255,255,.15);
+      background: rgba(255, 255, 255, .15);
       border: 0;
       box-shadow: none;
       color: #dbdada;
@@ -89,7 +89,7 @@
       padding-top: 1px;
       width: 100%;
       &:focus {
-        background: rgba(255,255,255,.3);
+        background: rgba(255, 255, 255, .3);
         color: #fff;
         transition-duration: 400ms;
         transition-property: background-color;
@@ -98,7 +98,7 @@
   }
   .navbar-right {
     float: none !important;
-    margin-left: 0px;
+    margin-left: 0;
     margin-right: 5px;
     > li {
       &.active {
@@ -117,44 +117,44 @@
       > a {
         color: #eee;
         padding: 7px 20px;
-        @media (min-width: @screen-md) {
+        $media (min-width: $screen-md) {
           padding: 25px 15px;
         }
         &:hover {
           color: #fff;
         }
       }
-      @media (min-width: @screen-md) {
+      $media (min-width: $screen-md) {
         .home & {
           &:hover, &.open {
             background: #252525;
-            background: rgba(0,0,0,.1);
+            background: rgba(0, 0, 0, .1);
           }
         }
       }
     }
   }
   .navbar-toggle-sidebar {
-    background: @navbar-sidebar-bg-color;
+    background: $navbar-sidebar-bg-color;
     border: 0;
     border-radius: 0;
     box-shadow: 0 0 3px rgba(0,0,0,.95);
-    color: rgba(255,255,255,.6);
+    color: rgba(255, 255, 255, .6);
     height: 100%;
     padding: 0 5px;
     position: absolute;
-    right: (-(@navbar-toggle-sidebar-width));
+    right: (-($navbar-toggle-sidebar-width));
     top: 0;
-    width: @navbar-toggle-sidebar-width;
+    width: $navbar-toggle-sidebar-width;
     z-index: 3;
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false) !important;
-    @media (min-width: @screen-md) {
+    $media (min-width: $screen-md) {
       display: none;
     }
     &:active,
     &:focus,
     &:hover {
-      background: lighten(@navbar-sidebar-bg-color, 10%);
+      background: lighten($navbar-sidebar-bg-color, 10%);
       color: rgba(255,255,255,1);
       outline: none;
     }
@@ -179,7 +179,7 @@
         color: #fff;
         cursor: pointer;
         display: block;
-        padding: (@grid-gutter-width / 8) (@grid-gutter-width / 2);
+        padding: ($grid-gutter-width / 8) ($grid-gutter-width / 2);
         &:hover {
           text-decoration: none;
         }
@@ -187,11 +187,11 @@
     }
   }
   > ul {
-    margin: 0 0 (@grid-gutter-width / 2) 0;
+    margin: 0 0 ($grid-gutter-width / 2) 0;
     > li {
       > a {
         border-bottom: 1px solid #393f44;
-        font-size: (@font-size-large + 2);
+        font-size: ($font-size-large + 2);
         margin-bottom: 10px;
         line-height: 60px;
         padding-bottom: 0;
@@ -201,7 +201,7 @@
         &.active {
           background: rgba(101, 109, 115, 0.25);
           &:after {
-            background: @link-color;
+            background: $link-color;
             content: '';
             height: 100%;
             left: 0;
@@ -217,7 +217,7 @@
             display: block;
             > li {
               &.active > a {
-                color: @link-color;
+                color: $link-color;
                 &:hover {
                   background: transparent;
                 }
@@ -231,15 +231,15 @@
         a {
           cursor: pointer;
           &:before {
-            font-family: @icon-font-name-fa;
+            font-family: $icon-font-name-fa;
             margin-right: 5px;
             vertical-align: 0;
           }
           &.expanded:before {
-            content: @fa-var-angle-down;
+            content: $fa-var-angle-down;
           }
           &.collapsed:before {
-            content: @fa-var-angle-right;
+            content: $fa-var-angle-right;
             margin-left: 2px;
             margin-right: 7px;
           }
@@ -258,7 +258,7 @@
             display: block;
           }
           > li > a {
-            padding-left: ((@grid-gutter-width) / 2 + (@grid-gutter-width) / 4 + 4);
+            padding-left: (($grid-gutter-width) / 2 + ($grid-gutter-width) / 4 + 4);
           }
         }
       }
@@ -281,15 +281,15 @@
     border-top: 1px solid #393f44;
   }
   &.navbar-primary {
-    @media (min-width: @screen-md) {
-      left: (-(@navbar-sidebar-width));
+    $media (min-width: $screen-md) {
+      left: (-($navbar-sidebar-width));
     }
   }
   .secondary-menu-toggle-icon {
-    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-      color: @color-pf-blue-400;
+    $media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      color: $color-pf-blue-400;
       display: inline-block;
-      font-family: @icon-font-name-fa;
+      font-family: $icon-font-name-fa;
       font-size: inherit;
       margin-right: 10px;
       -webkit-font-smoothing: antialiased;

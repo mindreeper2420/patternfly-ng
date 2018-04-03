@@ -9,7 +9,7 @@ import { CardConfig } from '../card-config';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'card-custom-example',
-  styleUrls: ['./card-custom-example.component.less'],
+  styleUrls: ['./card-custom-example.component.scss'],
   templateUrl: './card-custom-example.component.html'
 })
 export class CardCustomExampleComponent implements OnInit {

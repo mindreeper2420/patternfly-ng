@@ -1,3 +1,5 @@
+@import '../../../node_modules/patternfly/dist/sass/patternfly/_color-variables.scss';
+
 .filter-pf {
   a { cursor: pointer; }
 }
@@ -10,16 +12,19 @@
 .pfng-save-filter {
   input {
     display: inline;
-    @media (min-width: @screen-xs-min) { width: 10em; }
-    @media (min-width: @screen-sm-min) { width: 15em; }
+
+    @media (min-width: 0) { width: 10em; }
+
+    @media (min-width: 768px) { width: 15em; }
   }
+
   .popover {
     max-width: initial;
   }
 }
 
 .pfng-save-filter-divider {
-  border-top: 1px solid @color-pf-black-300;
+  border-top: 1px solid $color-pf-black-300;
   margin-left: -15px;
   margin-right: -15px;
   margin-top: 10px;

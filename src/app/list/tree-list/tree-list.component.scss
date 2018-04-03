@@ -8,7 +8,7 @@
   .node-content-wrapper {
     padding: 0;
     &.is-dragging-over {
-      background-color: @color-pf-black-300;
+      background-color: $color-pf-black-300;
     }
   }
 
@@ -17,7 +17,7 @@
     height: 5px;
     &.is-dragging-over {
       height: 25px;
-      background-color: @color-pf-black-300;
+      background-color: $color-pf-black-300;
     }
   }
 
@@ -82,12 +82,12 @@
   margin-left: 5px;
   &:hover {
     &:before {
-      background-image: linear-gradient(to bottom, @color-pf-blue-400 60%, @color-pf-white 0%);
+      background-image: linear-gradient(to bottom, $color-pf-blue-400 60%, $color-pf-white 0%);
       background-position: left;
       background-repeat: repeat-y;
       background-size: 2px 5px;
-      border: 4px solid @color-pf-blue-400;
-      border-color: @color-pf-blue-500;
+      border: 4px solid $color-pf-blue-400;
+      border-color: $color-pf-blue-500;
       content: '';
       height: 55px;
       left: 4px;

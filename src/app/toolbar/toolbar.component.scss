@@ -5,13 +5,16 @@
 
 .toolbar-pf-actions {
   .btn { min-width: unset; }
+
   .toolbar-pf-view-selector {
     a { cursor: pointer; }
   }
+
   .dropdown-menu {
     a { cursor: pointer; }
   }
   .dropdown-kebab-pf { float: right; }
+
   .toolbar-apf-filter {
     /* stylelint-disable */
     padding-left: 0 !important;

@@ -9,7 +9,8 @@ import { TabDirective } from 'ngx-bootstrap/tabs';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'action-example',
-  styleUrls: ['./action-example.component.less'],
+  // styleUrls: ['./action-example.component.less'],
+  styleUrls: ['./action-example.component.scss'],
   templateUrl: './action-example.component.html'
 })
 export class ActionExampleComponent implements OnInit {

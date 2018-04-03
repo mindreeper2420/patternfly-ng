@@ -17,6 +17,7 @@
 .pfng-list-expand {
   .fa-angle-right {
     padding-left: 5px;
+
     &.fa-angle-down {
       padding-left: 0;
     }
@@ -26,6 +27,7 @@
 // For displaying close button in expansion area
 .pfng-list-expansion {
   position: relative;
+
   .list-pf-content {
     flex-grow: 1;
   }
@@ -42,7 +44,7 @@
 
   // Heading should not highlight on mouse hover
   &:hover {
-    background-color: @color-pf-white;
+    background-color: $color-pf-white;
   }
 
   // Allow info icons to generate events
@@ -62,7 +64,8 @@
   }
 
   // Remove the divider line for heading
-  .list-pf-chevron, .list-pf-select {
+  .list-pf-chevron,
+  .list-pf-select {
     + .list-pf-content {
       border-left: none;
     }
@@ -73,8 +76,8 @@
 .pfng-list-pin {
   align-items: center;
   align-self: stretch;
-  background-color: @color-pf-black-150;
-  box-shadow: -3px 1px 4px 0 @color-pf-black-200 inset;
+  background-color: $color-pf-black-150;
+  box-shadow: -3px 1px 4px 0 $color-pf-black-200 inset;
   display: flex;
   margin-bottom: -20px;
   margin-left: -20px;
@@ -84,12 +87,15 @@
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 20px;
+
   &.multi-ctrls {
     margin-right: 10px;
   }
+
   a {
-    color: @color-pf-black;
+    color: $color-pf-black;
     opacity: .7;
+
     &:hover {
       opacity: 1;
     }
@@ -106,6 +112,7 @@
 .pfng-list-pin-placeholder {
   margin-left: -20px;
   width: 39px;
+
   &.multi-ctrls {
     width: 28px;
   }

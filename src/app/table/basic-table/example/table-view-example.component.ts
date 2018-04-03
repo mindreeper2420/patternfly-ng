@@ -29,7 +29,7 @@ import { cloneDeep } from 'lodash';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'table-view-example',
-  styleUrls: ['./table-view-example.component.less'],
+  styleUrls: ['./table-view-example.component.scss'],
   templateUrl: './table-view-example.component.html'
 })
 export class TableViewExampleComponent implements OnInit {

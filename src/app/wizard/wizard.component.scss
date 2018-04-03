@@ -1,0 +1,39 @@
+.pfng-wizard {
+  &-cancel-inline {
+    margin-left: 25px;
+  }
+
+  &-footer-inline {
+    text-align: left;
+  }
+
+  &-main {
+    margin-left: 0;
+  }
+
+  &-position-override {
+    position: relative;
+  }
+}
+
+.wizard-pf {
+  &-footer {
+    .pfng-wizard-previous-btn {
+      &.pfng-wizard-btn-no-back {
+        display: none;
+      }
+    }
+  }
+
+  &-steps-indicator li a.disabled {
+    cursor: default;
+
+    &:hover {
+      .wizard-pf-step-number {
+        background-color: $color-pf-white;
+        border-color: $color-pf-black-400;
+        color: $color-pf-black-400;
+      }
+    }
+  }
+}

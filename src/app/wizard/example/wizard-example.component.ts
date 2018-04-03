@@ -16,7 +16,7 @@ import { WizardEvent } from '../wizard-event';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'wizard-example',
-  styleUrls: ['./wizard-example.component.less'],
+  styleUrls: ['./wizard-example.component.scss'],
   templateUrl: './wizard-example.component.html'
 })
 export class WizardExampleComponent implements OnInit {

@@ -2,15 +2,18 @@
   .card-pf-footer {
     min-height: 60px;
   }
+
   &.pfng-card-no-padding {
     &.card-pf {
       padding-left: 0;
       padding-right: 0;
     }
+
     .card-pf-body {
       margin-top: 0;
       padding-bottom: 0;
     }
+
     .card-pf-heading {
       margin-bottom: 0;
       margin-left: 0;
@@ -20,6 +23,6 @@
 }
 
 .pfng-card-heading-no-bottom {
-  margin: 0 -20px 0px;
+  margin: 0 -20px 0;
   padding: 0 20px;
 }

@@ -9,7 +9,7 @@ import { InfoStatusCardConfig } from '../info-status-card-config';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'info-status-card-example',
-  styleUrls: ['./info-status-card-example.component.less'],
+  styleUrls: ['./info-status-card-example.component.scss'],
   templateUrl: './info-status-card-example.component.html'
 })
 

@@ -12,7 +12,7 @@ import { ListConfig } from '../list-config';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'list-heading-example',
-  styleUrls: ['./list-heading-example.component.less'],
+  styleUrls: ['./list-heading-example.component.scss'],
   templateUrl: './list-heading-example.component.html'
 })
 export class ListHeadingExampleComponent implements OnInit {

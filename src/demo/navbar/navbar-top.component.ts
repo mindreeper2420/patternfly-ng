@@ -10,7 +10,7 @@ import {
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'navbar-top',
-  styleUrls: ['./navbar-top.component.less'],
+  styleUrls: ['./navbar-top.component.scss'],
   templateUrl: './navbar-top.component.html'
 })
 export class NavbarTopComponent implements OnInit {

@@ -1,8 +1,6 @@
-@import "../assets/stylesheets/patternfly-ng";
-
 // ngx-bootstrap tab style
 .tab-container {
-  border: 1px @color-pf-black;
+  border: 1px $color-pf-black;
 }
 
 .demoframe {
@@ -11,7 +9,7 @@
   height: 800px;
 }
 
-ul ul{
+ul {
   list-style-type: disc;
   padding-left: 15px;
 }
