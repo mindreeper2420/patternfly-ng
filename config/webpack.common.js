@@ -71,27 +71,30 @@ module.exports = {
       /* File loader for supporting fonts, for example, in CSS files.
        */
       {
-        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
-        loaders: [
-          {
-            loader: "url-loader",
-            query: {
-              limit: 3000,
-              name: 'assets/fonts/[name].[ext]'
-            }
+        test: /\.(woff2|woff|ttf|eot|svg)$/,
+        use: {
+          loader: "url-loader",
+          query: {
+            limit: 3000,
+            includePaths: [
+              path.resolve(__dirname, "../node_modules/patternfly/dist/fonts/")
+            ],
+            name: 'assets/fonts/[name].[ext]'
           }
-        ]
+        },
+        exclude: path.resolve(__dirname, "../src/assets/images/")
       }, {
-        test: /\.jpg$|\.png$|\.gif$|\.jpeg$/,
-        loaders: [
-          {
-            loader: "url-loader",
-            query: {
-              limit: 3000,
-              name: 'assets/fonts/[name].[ext]'
-            }
+        test: /\.(jpg|png|svg|gif|jpeg)$/,
+        use: {
+          loader: "url-loader",
+          query: {
+            limit: 3000,
+            includePaths: [
+                path.resolve(__dirname, "../src/assets/images/")
+            ]
           }
-        ]
+        },
+        exclude: path.resolve(__dirname, "../node_modules/patternfly/dist/fonts/")
       },
 
       // Support for *.json files.

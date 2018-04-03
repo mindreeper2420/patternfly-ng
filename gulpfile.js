@@ -1,21 +1,22 @@
-
-var gulp = require('gulp'),
-  autoprefixer = require('autoprefixer'),
-  changed = require('gulp-changed'),
-  cssmin = require('gulp-cssmin'),
-  csso = require('csso'),
-  del = require('del'),
-  fs = require("fs"),
-  htmlMinifier = require('html-minifier'),
-  lessCompiler = require('gulp-less'),
-  ngc = require('gulp-ngc'),
-  path = require('path'),
-  postcss = require('postcss'),
-  replace = require('gulp-replace'),
-  rename = require('gulp-rename');
-  sourcemaps = require('gulp-sourcemaps'),
-  stylelint = require('gulp-stylelint'),
-  stylus = require('stylus');
+var gulp            = require('gulp'),
+    sass            = require('gulp-sass'),
+    autoprefixer    = require('autoprefixer'),
+    changed         = require('gulp-changed'),
+    cssmin          = require('gulp-cssmin'),
+    csso            = require('csso'),
+    del             = require('del'),
+    fs              = require("fs"),
+    htmlMinifier    = require('html-minifier'),
+    insert          = require('gulp-insert').
+    ngc             = require('gulp-ngc'),
+    path            = require('path'),
+    postcss         = require('postcss'),
+    replace         = require('gulp-replace'),
+    rename          = require('gulp-rename');
+    sassGlob        = require('gulp-sass-glob'),
+    sourcemaps      = require('gulp-sourcemaps'),
+    stylelint       = require('gulp-stylelint'),
+    stylus          = require('stylus');
 
 var appSrc = 'src';
 var libraryBuild = 'build';
@@ -53,8 +54,8 @@ function updateWatchDist() {
 function transpileLESS(src) {
   return gulp.src(src)
     .pipe(sourcemaps.init())
-    .pipe(lessCompiler({
-      paths: [ path.join(__dirname, 'less', 'includes') ]
+    .pipe(sass({
+      paths: [ path.join(__dirname, 'scss', 'includes') ]
     }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(function (file) {
@@ -66,8 +67,8 @@ function transpileLESS(src) {
 function transpileMinifyLESS(src) {
   return gulp.src(src)
     .pipe(sourcemaps.init())
-    .pipe(lessCompiler({
-      paths: [ path.join(__dirname, 'less', 'includes') ]
+    .pipe(sass({
+      paths: [ path.join(__dirname, 'scss', 'includes') ]
     }))
     .pipe(cssmin().on('error', function(err) {
       console.log(err);
@@ -100,29 +101,29 @@ function minifyTemplate(file) {
 // Stylelint task
 gulp.task('lint-css', function lintCssTask() {
   return gulp
-    .src(['./src/assets/stylesheets/*.less', './src/app/**/*.less'])
-    .pipe(stylelint({
-      failAfterError: true,
-      reporters: [
-        {formatter: 'string', console: true}
-      ]
-    }));
+    .src(['./src/assets/stylesheets/*.scss', './src/app/**/*.scss'])
+    // .pipe(stylelint({
+    //   failAfterError: true,
+    //   reporters: [
+    //     {formatter: 'string', console: true}
+    //   ]
+    // }));
 });
 
 // Less compilation
 gulp.task('transpile-less', ['lint-css'], function () {
-  return transpileLESS(appSrc + '/assets/stylesheets/*.less');
+  return transpileLESS(appSrc + '/assets/stylesheets/*.scss');
 });
 
 // Less compilation and minifiction
-gulp.task('min-css', ['transpile-less'], function () {
-  return transpileMinifyLESS(appSrc + '/assets/stylesheets/*.less');
+gulp.task('min-css', ['copy-assets-less'], function () {
+  return transpileMinifyLESS(appSrc + '/assets/stylesheets/*.scss');
 });
 
 // Put the files back to normal 'transpile',
 gulp.task('build',
   [
-    'transpile',
+    // 'transpile',
     'copy-css',
     'copy-less'
   ]);
@@ -133,7 +134,7 @@ gulp.task('transpile', ['inline-template'], function () {
 });
 
 // Inline HTML templates in component classes
-gulp.task('inline-template', function () {
+gulp.task('inline-template', ['copy-css'], function () {
   return gulp.src(['./src/app/**/*.ts'].concat(globalExcludes), {base: './'})
     .pipe(replace(/templateUrl.*\'/g, function (matched) {
       var fileName = matched.match(/\/.*html/g).toString();
@@ -145,7 +146,7 @@ gulp.task('inline-template', function () {
 });
 
 // Copy CSS to dist/css
-gulp.task('copy-css', ['min-css'], function () {
+gulp.task('copy-css', ['copy-less'], function () {
   return gulp.src(['./src/assets/stylesheets/*.css'], {base: './src/assets/stylesheets'})
     .pipe(gulp.dest(function (file) {
       return libraryDist + '/css' + file.base.slice(__dirname.length); // save directly to dist
@@ -153,15 +154,15 @@ gulp.task('copy-css', ['min-css'], function () {
 });
 
 // Copy component LESS to dist/less in a flattened directory
-gulp.task('copy-less', ['copy-assets-less'], function () {
-  return gulp.src(['./src/app/**/*.less'].concat(globalExcludes))
+gulp.task('copy-less', ['min-css'], function () {
+  return gulp.src(['./src/app/**/*.scss'].concat(globalExcludes))
     .pipe(rename({dirname: ''}))
-    .pipe(gulp.dest(libraryDist + '/less'));
+    .pipe(gulp.dest(libraryDist + '/scss'));
 });
 
 // Copy asset LESS to dist/less and replace relative paths for flattened directory
-gulp.task('copy-assets-less', function () {
-  return gulp.src(['./src/assets/stylesheets/*.less'])
+gulp.task('copy-assets-less',['transpile-less'], function () {
+  return gulp.src(['./src/assets/stylesheets/*.scss'])
     .pipe(replace(/\.\.\/.\.\/.\.\//g, function () {
       return '../../../../';
     }))
@@ -169,7 +170,7 @@ gulp.task('copy-assets-less', function () {
       return '@import \'';
     }))
     .pipe(rename({dirname: ''}))
-    .pipe(gulp.dest(libraryDist + '/less'));
+    .pipe(gulp.dest(libraryDist + '/scss'));
 });
 
 // Copy example files to dist-demo (e.g., HTML and Typscript for docs)
@@ -191,7 +192,7 @@ gulp.task('watch', ['build', 'copy-watch-all'], function () {
   gulp.watch([appSrc + '/app/**/*.ts', '!' + appSrc + '/app/**/*.spec.ts'], ['transpile', 'post-transpile', 'copy-watch']).on('change', function (e) {
     console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
   });
-  gulp.watch([appSrc + '/app/**/*.less'], ['min-less']).on('change', function (e) {
+  gulp.watch([appSrc + '/app/**/*.scss'], ['min-less']).on('change', function (e) {
     console.log(e.path + ' has been changed. Updating.');
     transpileLESS(e.path);
     updateWatchDist();
