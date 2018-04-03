@@ -102,12 +102,12 @@ function minifyTemplate(file) {
 gulp.task('lint-css', function lintCssTask() {
   return gulp
     .src(['./src/assets/stylesheets/*.scss', './src/app/**/*.scss'])
-    // .pipe(stylelint({
-    //   failAfterError: true,
-    //   reporters: [
-    //     {formatter: 'string', console: true}
-    //   ]
-    // }));
+    .pipe(stylelint({
+      failAfterError: true,
+      reporters: [
+        {formatter: 'string', console: true}
+      ]
+    }));
 });
 
 // Less compilation
@@ -123,7 +123,7 @@ gulp.task('min-css', ['copy-assets-less'], function () {
 // Put the files back to normal 'transpile',
 gulp.task('build',
   [
-    // 'transpile',
+    'transpile',
     'copy-css',
     'copy-less'
   ]);
